@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grupo Norte | Cadastro Colaborador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="header-card">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="title-main">
+                <h1>GRUPO NORTE</h1>
+                <p>Serviços & Transporte LTDA • CADASTRO COLABORADOR</p>
+            </div>
+        </div>
+        <div class="badge-muni">
+            <div class="muni-field">
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" id="editMunicipio" placeholder="Nome do município">
+                <span class="edit-hint"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+            <div class="data-field">
+                <i class="far fa-calendar-alt"></i>
+                <input type="text" id="editData" placeholder="DD/MM/AAAA" maxlength="10">
+                <span class="edit-hint"><i class="fas fa-pencil-alt"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-grid">
+        <form id="cadastroForm">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-id-card"></i>
+                    <h2>1. DADOS DO COLABORADOR</h2>
+                </div>
+                <div class="row">
+                    <div class="field" style="flex: 2 1 320px;"><label>NOME COMPLETO *</label><input type="text" id="nomeCompleto" placeholder="Nome completo do condutor"></div>
+                    <div class="field"><label>APELIDO</label><input type="text" id="apelido" placeholder="Como é conhecido"></div>
+                </div>
+                <div class="row">
+                    <div class="field"><label>ENDEREÇO</label><input type="text" id="endereco" placeholder="Rua, número, bairro"></div>
+                    <div class="field"><label>CPF</label><input type="text" id="cpf" placeholder="000.000.000-00"></div>
+                    <div class="field"><label>RG</label><input type="text" id="rg" placeholder="Nº RG"></div>
+                    <div class="field"><label>NIS/PIS</label><input type="text" id="nis" placeholder="NIS ou PIS"></div>
+                </div>
+                <div class="row">
+                    <div class="field"><label>Nº CIR/CNH</label><input type="text" id="cnh" placeholder="Nº registro CNH"></div>
+                    <div class="field"><label>VALIDADE CNH</label><input type="text" id="validadeCnh" placeholder="DD/MM/AAAA" maxlength="10"></div>
+                    <div class="field"><label>Nº DE CONTATO</label><input type="tel" id="contato" placeholder="(XX) XXXX-XXXX"></div>
+                    <div class="field"><label>E-MAIL</label><input type="email" id="email" placeholder="condutor@exemplo.com"></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-truck-moving"></i>
+                    <h2>2. DADOS DO VEÍCULO</h2>
+                </div>
+                <div class="row">
+                    <div class="field"><label>TIPO DE VEÍCULO</label>
+                        <select id="tipoVeiculo">
+                            <option value="terrestre">TERRESTRE</option>
+                            <option value="fluvial">FLUVIAL</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="camposTerrestre">
+                    <div class="row">
+                        <div class="field"><label>MODELO (Terrestre)</label><input type="text" id="modeloTerrestre" placeholder="Ex: Ônibus, Van"></div>
+                        <div class="field"><label>PLACA</label><input type="text" id="placa" placeholder="AAA-0000"></div>
+                        <div class="field"><label>RENAVAN</label><input type="text" id="renavan" placeholder="Número RENAVAN"></div>
+                        <div class="field"><label>CPF/CNPJ</label><input type="text" id="cpfCnpjVeiculo" placeholder="CPF ou CNPJ prop."></div>
+                    </div>
+                </div>
+                <div id="camposFluvial" style="display: none;">
+                    <div class="vehicle-detail">
+                        <div class="row">
+                            <div class="field"><label>MODELO (Embarcação)</label><input type="text" id="modeloFluvial" placeholder="Modelo do barco"></div>
+                            <div class="field"><label>NOME DA EMBARCAÇÃO</label><input type="text" id="nomeEmbarcacao" placeholder="Nome da embarcação"></div>
+                            <div class="field"><label>Nº INSC</label><input type="text" id="numInsc" placeholder="Inscrição da embarcação"></div>
+                            <div class="field"><label>VALIDADE</label><input type="text" id="validadeEmbarcacao" placeholder="DD/MM/AAAA" maxlength="10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title"><i class="fas fa-route"></i><h2>3. INFORMAÇÕES DA ROTA</h2></div>
+                <div class="row">
+                    <div class="field field-full"><label>ESCOLA</label><input type="text" id="escola" placeholder="Nome da escola"></div>
+                </div>
+                <div class="row">
+                    <div class="field field-full"><label>DETALHAMENTO DA ROTA</label><textarea id="detalheRota" rows="2" placeholder="Ponto de partida, trajeto, referências..."></textarea></div>
+                </div>
+                <div class="row">
+                    <div class="turno-block">
+                        <label>TURNO</label>
+                        <div class="turno-grid">
+                            <div class="turno-shift-card">
+                                <div class="turno-shift-title">MANHÃ:</div>
+                                <div class="turno-fields-row">
+                                    <span class="turno-tag">IDA</span>
+                                    <input type="time" class="turno-time" id="manhaIda">
+                                    <span class="turno-tag">VOLTA:</span>
+                                    <input type="time" class="turno-time" id="manhaVolta">
+                                </div>
+                            </div>
+                            <div class="turno-shift-card">
+                                <div class="turno-shift-title">TARDE:</div>
+                                <div class="turno-fields-row">
+                                    <span class="turno-tag">IDA</span>
+                                    <input type="time" class="turno-time" id="tardeIda">
+                                    <span class="turno-tag">VOLTA:</span>
+                                    <input type="time" class="turno-time" id="tardeVolta">
+                                </div>
+                            </div>
+                            <div class="turno-shift-card">
+                                <div class="turno-shift-title">NOITE:</div>
+                                <div class="turno-fields-row">
+                                    <span class="turno-tag">IDA</span>
+                                    <input type="time" class="turno-time" id="noiteIda">
+                                    <span class="turno-tag">VOLTA:</span>
+                                    <input type="time" class="turno-time" id="noiteVolta">
+                                </div>
+                            </div>
+                            <div class="turno-shift-card">
+                                <div class="turno-shift-title">INTEGRAL:</div>
+                                <div class="turno-fields-row">
+                                    <span class="turno-tag">IDA</span>
+                                    <input type="time" class="turno-time" id="integralIda">
+                                    <span class="turno-tag">VOLTA:</span>
+                                    <input type="time" class="turno-time" id="integralVolta">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title"><i class="fas fa-university"></i><h2>4. DADOS BANCÁRIOS</h2></div>
+                <div class="row">
+                    <div class="field"><label>BANCO</label><input type="text" id="banco" placeholder="Nome do banco"></div>
+                    <div class="field"><label>AGÊNCIA</label><input type="text" id="agencia" placeholder="Nº agência"></div>
+                    <div class="field"><label>Nº CONTA</label><input type="text" id="numeroConta" placeholder="Número da conta"></div>
+                    <div class="field">
+                        <label>TIPO DE CONTA</label>
+                        <div class="radio-group-vertical">
+                            <label class="radio-item"><input type="radio" name="tipoConta" id="tipoContaCorrente" value="corrente"> CORRENTE</label>
+                            <label class="radio-item"><input type="radio" name="tipoConta" id="tipoContaPoupanca" value="poupanca"> POUPANÇA</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field field-full">
+                        <label>CHAVE PIX</label>
+                        <div class="pix-row">
+                            <div class="radio-group-horizontal">
+                                <label class="radio-item"><input type="radio" name="tipoPix" id="pixCPF" value="cpf"> CPF</label>
+                                <label class="radio-item"><input type="radio" name="tipoPix" id="pixTel" value="tel"> TEL</label>
+                                <label class="radio-item"><input type="radio" name="tipoPix" id="pixEmail" value="email"> EMAIL</label>
+                            </div>
+                            <input type="text" id="chavePix" class="pix-input" placeholder="CPF, e-mail, telefone ou aleatória">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title"><i class="fas fa-check-circle"></i><h2>5. CHECKLIST DOCUMENTAÇÃO</h2></div>
+                <div class="checklist">
+                    <label class="check-item"><input type="checkbox" id="checkRG"> RG</label>
+                    <label class="check-item"><input type="checkbox" id="checkCPF"> CPF</label>
+                    <label class="check-item"><input type="checkbox" id="checkCNH"> CNH/CIR</label>
+                    <label class="check-item"><input type="checkbox" id="checkCLRV"> CLRV</label>
+                    <label class="check-item"><input type="checkbox" id="checkDocBarco"> DOCUMENTAÇÃO DO BARCO</label>
+                    <label class="check-item"><input type="checkbox" id="checkCartaoBanco"> CARTÃO DO BANCO</label>
+                    <label class="check-item"><input type="checkbox" id="checkComprovanteRes"> COMPROVANTE DE RESIDÊNCIA</label>
+                </div>
+                <small class="info-hint"><i class="fas fa-info-circle"></i> Marque os documentos entregues para fins de contrato.</small>
+            </div>
+
+            <div class="section obs-area">
+                <div class="section-title"><i class="fas fa-pen-alt"></i><h2>6. OBSERVAÇÕES</h2></div>
+                <textarea id="observacoes" placeholder="Informações adicionais, restrições, observações pertinentes..."></textarea>
+                <div class="assinatura">
+                    <span><i class="far fa-signature"></i> Assinatura do Colaborador: __________________________________</span>
+                    <span><strong>GRUPO NORTE</strong> - CNPJ: 21.128.792/0001-54</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="btn btn-secondary" id="btnLimpar"><i class="fas fa-eraser"></i> Limpar</button>
+                <button type="button" class="btn btn-warning" id="btnImportar"><i class="fas fa-folder-open"></i> Importar</button>
+                <button type="button" class="btn btn-info" id="btnImprimir"><i class="fas fa-print"></i> Imprimir</button>
+                <button type="button" class="btn btn-primary" id="btnSalvarArquivo"><i class="fas fa-save"></i> Salvar em Arquivo</button>
+                <button type="button" id="btnSalvar" class="btn-salvar" onclick="enviarCadastro()">
+                    <i class="fas fa-save"></i>
+                    <span>Salvar Cadastro</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Importação -->
+<div id="importModal" class="modal">
+    <div class="modal-content">
+        <h3><i class="fas fa-folder-open"></i> Importar Cadastro</h3>
+        <p>Selecione um arquivo JSON de cadastro salvo anteriormente:</p>
+        <div class="file-input-wrapper" onclick="document.getElementById('fileInput').click()">
+            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #0077b6;"></i>
+            <p>Clique para selecionar um arquivo .json</p>
+            <input type="file" id="fileInput" accept=".json" style="display: none;">
+        </div>
+        <div class="modal-buttons">
+            <button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<div id="toastMsg" class="toast-message">✅ Operação realizada com sucesso!</div>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
