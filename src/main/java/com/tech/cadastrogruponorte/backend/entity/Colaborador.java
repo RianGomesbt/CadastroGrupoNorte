@@ -1,6 +1,11 @@
 package com.tech.cadastrogruponorte.backend.entity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_colaboradores")
@@ -12,17 +17,32 @@ public class Colaborador {
 
     // 1. DADOS DO COLABORADOR
     @Column(nullable = false)
+    @NotBlank(message = "O nome completo é obrigatório.")
+    @Size(max = 80, message = "O nome deve ter no máximo 80 caracteres.")
     private String nomeCompleto;
     private String apelido;
     private String endereco;
 
+    @NotBlank(message = "O CPF é obrigatório.")
     @Column(nullable = false, unique = true, length = 14)
     private String cpf;
 
+    @Size(max = 20, message = "RG muito grande.")
     private String rg;
+
+    @Size(max = 20)
     private String nisPis;
+
+    @Size(max = 30)
     private String numeroCirCnh;
+
+    @NotNull(message = "Informe a validade da CNH.")
     private LocalDate validadeCnh;
+
+    @Pattern(
+            regexp = "^\\(\\d{2}\\)\\s?\\d{4,5}-\\d{4}$",
+            message = "Telefone inválido."
+    )
     private String numeroContato;
     private String email;
 

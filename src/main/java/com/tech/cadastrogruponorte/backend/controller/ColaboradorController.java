@@ -1,6 +1,7 @@
 package com.tech.cadastrogruponorte.backend.controller;
 import com.tech.cadastrogruponorte.backend.entity.Colaborador;
 import com.tech.cadastrogruponorte.backend.service.ColaboradorService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +21,7 @@ public class ColaboradorController {
 
     // POST /api/colaboradores -> Salva uma nova ficha
     @PostMapping
-    public ResponseEntity<?> salvar(@RequestBody Colaborador colaborador) {
-        System.out.println(">>> Novo cadastro recebido:");
-        System.out.println("Nome: " + colaborador.getNomeCompleto());
-        System.out.println("CPF: " + colaborador.getCpf());
-        System.out.println("Banco: " + colaborador.getBanco());
-        System.out.println("Check RG: " + colaborador.isEntregaRg());
+    public ResponseEntity<?> salvar(@RequestBody @Valid Colaborador colaborador) { 
         try {
             Colaborador salvo = service.salvar(colaborador);
             return ResponseEntity.status(HttpStatus.CREATED).body(salvo);

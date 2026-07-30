@@ -54,7 +54,15 @@
                 </div>
                 <div class="row">
                     <div class="field"><label>Nº CIR/CNH</label><input type="text" id="cnh" placeholder="Nº registro CNH"></div>
-                    <div class="field"><label>VALIDADE CNH</label><input type="text" id="validadeCnh" placeholder="DD/MM/AAAA" maxlength="10"></div>
+                    <div class="field">
+                        <label for="validadeCnh">VALIDADE CNH</label>
+                        <input
+                                type="date"
+                                id="validadeCnh"
+                                name="validadeCnh"
+                                required
+                        >
+                    </div>
                     <div class="field"><label>Nº DE CONTATO</label><input type="tel" id="contato" placeholder="(XX) XXXX-XXXX"></div>
                     <div class="field"><label>E-MAIL</label><input type="email" id="email" placeholder="condutor@exemplo.com"></div>
                 </div>

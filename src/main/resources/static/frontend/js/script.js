@@ -29,12 +29,6 @@
     applyDateMask(this);
 });
 }
-
-    const validadeCnhInput = document.getElementById('validadeCnh');
-    if (validadeCnhInput) {
-    validadeCnhInput.addEventListener('input', function(e) { applyDateMask(this); });
-}
-
     const validadeEmbarcacaoInput = document.getElementById('validadeEmbarcacao');
     if (validadeEmbarcacaoInput) {
     validadeEmbarcacaoInput.addEventListener('input', function(e) { applyDateMask(this); });
@@ -545,83 +539,6 @@
     document.getElementById('editMunicipio').addEventListener('change', function() {
     sessionStorage.setItem('ultimoMunicipio', this.value);
 });
-    function converterDataParaISO(data) {
-        if (!data) return null;
-        const partes = data.split("/");
-        if (partes.length !== 3) return null;
-        return `${partes[2]}-${partes[1]}-${partes[0]}`;
-    }
-
-    function getColaboradorDTO() {
-        // Captura o tipo original primeiro para fazer a checagem do modelo
-        const tipoVeiculoRaw = document.getElementById("tipoVeiculo")?.value || "";
-
-        return {
-            // ==========================
-            // 1. DADOS DO COLABORADOR
-            // ==========================
-            nomeCompleto: document.getElementById("nomeCompleto")?.value.trim() || "",
-            apelido: document.getElementById("apelido")?.value.trim() || "",
-            endereco: document.getElementById("endereco")?.value.trim() || "",
-            cpf: document.getElementById("cpf")?.value.trim() || "",
-            rg: document.getElementById("rg")?.value.trim() || "",
-            nisPis: document.getElementById("nis")?.value.trim() || "",
-            numeroCirCnh: document.getElementById("cnh")?.value.trim() || "",
-            validadeCnh: converterDataParaISO(document.getElementById("validadeCnh")?.value),
-            numeroContato: document.getElementById("contato")?.value.trim() || "",
-            email: document.getElementById("email")?.value.trim() || "",
-
-            // ==========================
-            // 2. DADOS DO VEÍCULO
-            // ==========================
-            tipoVeiculo: tipoVeiculoRaw.toUpperCase(),
-            modeloVeiculo: tipoVeiculoRaw.toLowerCase() === "fluvial"
-                ? document.getElementById("modeloFluvial")?.value.trim() || ""
-                : document.getElementById("modeloTerrestre")?.value.trim() || "",
-            placa: document.getElementById("placa")?.value.trim() || "",
-            renavam: document.getElementById("renavan")?.value.trim() || "",
-            cpfCnpjProprietario: document.getElementById("cpfCnpjVeiculo")?.value.trim() || "",
-
-            // ==========================
-            // 3. INFORMAÇÕES DA ROTA
-            // ==========================
-            escola: document.getElementById("escola")?.value.trim() || "",
-            detalhamentoRota: document.getElementById("detalheRota")?.value.trim() || "",
-            manhaIda: document.getElementById("manhaIda")?.value || "",
-            manhaVolta: document.getElementById("manhaVolta")?.value || "",
-            tardeIda: document.getElementById("tardeIda")?.value || "",
-            tardeVolta: document.getElementById("tardeVolta")?.value || "",
-            noiteIda: document.getElementById("noiteIda")?.value || "",
-            noiteVolta: document.getElementById("noiteVolta")?.value || "",
-            integralIda: document.getElementById("integralIda")?.value || "",
-            integralVolta: document.getElementById("integralVolta")?.value || "",
-
-            // ==========================
-            // 4. INFORMAÇÕES DA CONTA BANCÁRIA
-            // ==========================
-            banco: document.getElementById("banco")?.value.trim() || "",
-            agencia: document.getElementById("agencia")?.value.trim() || "",
-            numeroConta: document.getElementById("numeroConta")?.value.trim() || "",
-            tipoConta: document.querySelector('input[name="tipoConta"]:checked')?.value || "",
-            tipoChavePix: document.querySelector('input[name="tipoPix"]:checked')?.value || "", // Confirme com sua Entity
-            chavePix: document.getElementById("chavePix")?.value.trim() || "",
-
-            // ==========================
-            // 5. CHECKLIST DOCUMENTAÇÃO
-            // (Confirme se na sua Entity os nomes são check... ou entrega...)
-            // ==========================
-            checkRG: document.getElementById("checkRG")?.checked || false,
-            checkCPF: document.getElementById("checkCPF")?.checked || false,
-            checkCNH: document.getElementById("checkCNH")?.checked || false,
-            checkCLRV: document.getElementById("checkCLRV")?.checked || false,
-            checkDocBarco: document.getElementById("checkDocBarco")?.checked || false,
-            checkCartaoBanco: document.getElementById("checkCartaoBanco")?.checked || false,
-            checkComprovanteRes: document.getElementById("checkComprovanteRes")?.checked || false,
-
-            // Observações (faltava esse campo no seu segundo bloco)
-            observacoes: document.getElementById("observacoes")?.value.trim() || ""
-        };
-    }
     function converterDataParaISO(data) {
         if (!data) return null;
 
