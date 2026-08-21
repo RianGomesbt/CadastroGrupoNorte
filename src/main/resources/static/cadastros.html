@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grupo Norte | Cadastros</title>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f6f9;
+        }
+
+        .cadastros-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .topo {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .topo h1 {
+            margin: 0;
+            color: #1f2937;
+        }
+
+        .topo p {
+            margin: 5px 0 0;
+            color: #6b7280;
+        }
+
+        .acoes-topo {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-novo {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-atualizar {
+            background: #16a34a;
+            color: white;
+        }
+
+        .busca {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .busca input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .status {
+            margin: 15px 0;
+            font-weight: 600;
+        }
+
+        .tabela-container {
+            background: white;
+            border-radius: 15px;
+            overflow-x: auto;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th {
+            background: #1f2937;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .sem-registros {
+            text-align: center;
+            padding: 50px;
+            color: #6b7280;
+        }
+
+        .btn-visualizar {
+            background: #2563eb;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .erro {
+            color: #dc2626;
+        }
+
+        .sucesso {
+            color: #16a34a;
+        }
+
+        /* Modal */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-conteudo {
+            background: white;
+            max-width: 900px;
+            margin: 30px auto;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .fechar {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 25px;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .detalhes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .detalhe {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .detalhe strong {
+            display: block;
+            color: #6b7280;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .veiculo {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="cadastros-container">
+
+    <div class="topo">
+
+        <div>
+            <h1>
+                <i class="fas fa-users"></i>
+                Cadastros de Colaboradores
+            </h1>
+
+            <p>
+                Grupo Norte | Visualização dos colaboradores cadastrados
+            </p>
+        </div>
+
+        <div class="acoes-topo">
+
+            <button class="btn btn-atualizar" id="btnAtualizar">
+                <i class="fas fa-sync"></i>
+                Atualizar
+            </button>
+
+            <button class="btn btn-novo" id="btnNovoCadastro">
+                <i class="fas fa-plus"></i>
+                Novo Cadastro
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="busca">
+
+        <input
+                type="text"
+                id="campoBusca"
+                placeholder="Digite o nome ou CPF para pesquisar..."
+        >
+
+    </div>
+
+
+    <div id="status" class="status">
+        Carregando cadastros...
+    </div>
+
+
+    <div class="tabela-container">
+
+        <table>
+
+            <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>CNH</th>
+                <th>Validade CNH</th>
+                <th>Telefone</th>
+                <th>Ação</th>
+            </tr>
+
+            </thead>
+
+            <tbody id="tabelaCadastros">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-conteudo">
+
+        <span class="fechar" id="fecharModal">
+            &times;
+        </span>
+
+        <h2>
+            <i class="fas fa-user"></i>
+            Dados do Colaborador
+        </h2>
+
+        <div id="detalhesColaborador"></div>
+
+    </div>
+
+</div>
+
+
+<script src="cadastros.js"></script>
+
+</body>
+</html>

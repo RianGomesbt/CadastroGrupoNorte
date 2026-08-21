@@ -1,5 +1,6 @@
 package com.tech.cadastrogruponorte.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -43,10 +44,10 @@ public class Veiculo {
 
     @ManyToOne
     @JoinColumn(name = "colaborador_id")
+    @JsonIgnore
     private Colaborador colaborador;
 
     private Veiculo(){
-
     }
 
     public Long getId() {
