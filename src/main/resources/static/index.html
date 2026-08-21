@@ -6,7 +6,7 @@
     <title>Grupo Norte | Cadastro Colaborador</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -69,36 +69,134 @@
             </div>
 
             <div class="section">
+
                 <div class="section-title">
                     <i class="fas fa-truck-moving"></i>
                     <h2>2. DADOS DO VEÍCULO</h2>
+
+                    <button type="button" id="btnAdicionarVeiculo" class="btn-adicionar-veiculo">
+                        <i class="fas fa-plus"></i>
+                        Adicionar veículo
+                    </button>
                 </div>
-                <div class="row">
-                    <div class="field"><label>TIPO DE VEÍCULO</label>
-                        <select id="tipoVeiculo">
-                            <option value="terrestre">TERRESTRE</option>
-                            <option value="fluvial">FLUVIAL</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="camposTerrestre">
-                    <div class="row">
-                        <div class="field"><label>MODELO (Terrestre)</label><input type="text" id="modeloTerrestre" placeholder="Ex: Ônibus, Van"></div>
-                        <div class="field"><label>PLACA</label><input type="text" id="placa" placeholder="AAA-0000"></div>
-                        <div class="field"><label>RENAVAN</label><input type="text" id="renavan" placeholder="Número RENAVAN"></div>
-                        <div class="field"><label>CPF/CNPJ</label><input type="text" id="cpfCnpjVeiculo" placeholder="CPF ou CNPJ prop."></div>
-                    </div>
-                </div>
-                <div id="camposFluvial" style="display: none;">
-                    <div class="vehicle-detail">
-                        <div class="row">
-                            <div class="field"><label>MODELO (Embarcação)</label><input type="text" id="modeloFluvial" placeholder="Modelo do barco"></div>
-                            <div class="field"><label>NOME DA EMBARCAÇÃO</label><input type="text" id="nomeEmbarcacao" placeholder="Nome da embarcação"></div>
-                            <div class="field"><label>Nº INSC</label><input type="text" id="numInsc" placeholder="Inscrição da embarcação"></div>
-                            <div class="field"><label>VALIDADE</label><input type="text" id="validadeEmbarcacao" placeholder="DD/MM/AAAA" maxlength="10"></div>
+
+                <div id="veiculosContainer">
+
+                    <!-- VEÍCULO 1 -->
+                    <div class="veiculo-card">
+
+                        <div class="veiculo-card-title">
+                            <h3>Veículo 1</h3>
                         </div>
+
+                        <div class="row">
+
+                            <div class="field">
+                                <label>TIPO DE VEÍCULO</label>
+
+                                <select class="tipoVeiculo">
+                                    <option value="terrestre">TERRESTRE</option>
+                                    <option value="fluvial">FLUVIAL</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <!-- CAMPOS TERRESTRES -->
+
+                        <div class="camposTerrestre">
+
+                            <div class="row">
+
+                                <div class="field">
+                                    <label>MODELO (Terrestre)</label>
+                                    <input
+                                            type="text"
+                                            class="modeloTerrestre"
+                                            placeholder="Ex: Ônibus, Van">
+                                </div>
+
+                                <div class="field">
+                                    <label>PLACA</label>
+                                    <input
+                                            type="text"
+                                            class="placa"
+                                            placeholder="AAA-0000">
+                                </div>
+
+                                <div class="field">
+                                    <label>RENAVAN</label>
+                                    <input
+                                            type="text"
+                                            class="renavan"
+                                            placeholder="Número RENAVAN">
+                                </div>
+
+                                <div class="field">
+                                    <label>CPF/CNPJ</label>
+                                    <input
+                                            type="text"
+                                            class="cpfCnpjVeiculo"
+                                            placeholder="CPF ou CNPJ prop.">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CAMPOS FLUVIAIS -->
+
+                        <div class="camposFluvial" style="display: none;">
+
+                            <div class="vehicle-detail">
+
+                                <div class="row">
+
+                                    <div class="field">
+                                        <label>MODELO (Embarcação)</label>
+                                        <input
+                                                type="text"
+                                                class="modeloFluvial"
+                                                placeholder="Modelo do barco">
+                                    </div>
+
+                                    <div class="field">
+                                        <label>NOME DA EMBARCAÇÃO</label>
+                                        <input
+                                                type="text"
+                                                class="nomeEmbarcacao"
+                                                placeholder="Nome da embarcação">
+                                    </div>
+
+                                    <div class="field">
+                                        <label>Nº INSC</label>
+                                        <input
+                                                type="text"
+                                                class="numInsc"
+                                                placeholder="Inscrição da embarcação">
+                                    </div>
+
+                                    <div class="field">
+                                        <label>VALIDADE</label>
+                                        <input
+                                                type="text"
+                                                class="validadeEmbarcacao"
+                                                placeholder="DD/MM/AAAA"
+                                                maxlength="10">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
+
             </div>
 
             <div class="section">
@@ -208,9 +306,7 @@
 
             <div class="actions">
                 <button type="button" class="btn btn-secondary" id="btnLimpar"><i class="fas fa-eraser"></i> Limpar</button>
-                <button type="button" class="btn btn-warning" id="btnImportar"><i class="fas fa-folder-open"></i> Importar</button>
                 <button type="button" class="btn btn-info" id="btnImprimir"><i class="fas fa-print"></i> Imprimir</button>
-                <button type="button" class="btn btn-primary" id="btnSalvarArquivo"><i class="fas fa-save"></i> Salvar em Arquivo</button>
                 <button type="button" id="btnSalvar" class="btn-salvar" onclick="enviarCadastro()">
                     <i class="fas fa-save"></i>
                     <span>Salvar Cadastro</span>
@@ -220,25 +316,7 @@
     </div>
 </div>
 
-<!-- Modal de Importação -->
-<div id="importModal" class="modal">
-    <div class="modal-content">
-        <h3><i class="fas fa-folder-open"></i> Importar Cadastro</h3>
-        <p>Selecione um arquivo JSON de cadastro salvo anteriormente:</p>
-        <div class="file-input-wrapper" onclick="document.getElementById('fileInput').click()">
-            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #0077b6;"></i>
-            <p>Clique para selecionar um arquivo .json</p>
-            <input type="file" id="fileInput" accept=".json" style="display: none;">
-        </div>
-        <div class="modal-buttons">
-            <button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
-        </div>
-    </div>
-</div>
-
-<div id="toastMsg" class="toast-message">✅ Operação realizada com sucesso!</div>
-
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

@@ -1,6 +1,9 @@
 package com.tech.cadastrogruponorte.backend.entity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -46,12 +49,13 @@ public class Colaborador {
     private String numeroContato;
     private String email;
 
-    // 2. DADOS DO VEÍCULO
-    private String tipoVeiculo; // "TERRESTRE" ou "FLUVIAL"
-    private String modeloVeiculo;
-    private String placa;
-    private String renavam;
-    private String cpfCnpjProprietario;
+    // 2. DADOS DO VEICULO
+    @OneToMany(
+            mappedBy = "colaborador",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Veiculo> veiculos = new ArrayList<>();
 
     // 3. INFORMAÇÕES DA ROTA
     private String escola;
@@ -181,46 +185,6 @@ public class Colaborador {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getTipoVeiculo() {
-        return tipoVeiculo;
-    }
-
-    public void setTipoVeiculo(String tipoVeiculo) {
-        this.tipoVeiculo = tipoVeiculo;
-    }
-
-    public String getModeloVeiculo() {
-        return modeloVeiculo;
-    }
-
-    public void setModeloVeiculo(String modeloVeiculo) {
-        this.modeloVeiculo = modeloVeiculo;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public String getRenavam() {
-        return renavam;
-    }
-
-    public void setRenavam(String renavam) {
-        this.renavam = renavam;
-    }
-
-    public String getCpfCnpjProprietario() {
-        return cpfCnpjProprietario;
-    }
-
-    public void setCpfCnpjProprietario(String cpfCnpjProprietario) {
-        this.cpfCnpjProprietario = cpfCnpjProprietario;
     }
 
     public String getEscola() {
@@ -413,5 +377,13 @@ public class Colaborador {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
+    }
+
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
     }
 }
