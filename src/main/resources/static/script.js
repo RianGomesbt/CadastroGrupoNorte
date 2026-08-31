@@ -1062,6 +1062,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
+            const contato = document.getElementById("contato");
+
+            contato.addEventListener("input", function () {
+
+                let valor = contato.value.replace(/\D/g, "");
+
+                if (valor.length > 11) {
+                    valor = valor.substring(0, 11);
+                }
+
+                if (valor.length <= 10) {
+
+                    valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
+                    valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+
+                } else {
+
+                    valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
+                    valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
+
+                }
+
+                contato.value = valor;
+            });
+
 
             // ====================================================
             // ERRO DO BACKEND
@@ -1225,25 +1250,29 @@ document.addEventListener("DOMContentLoaded", function () {
         return dados;
 
     };
-
-
 });
-const contato = document.getElementById("contato");
 
-contato.addEventListener("input", function () {
-    let valor = contato.value.replace(/\D/g, "");
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (valor.length > 11) {
-        valor = valor.substring(0, 11);
-    }
+    const contato = document.getElementById("contato");
 
-    if (valor.length <= 10) {
-        valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
-        valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
-    } else {
-        valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
-        valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
-    }
+    contato.addEventListener("input", function () {
 
-    contato.value = valor;
+        let valor = contato.value.replace(/\D/g, "");
+
+        if (valor.length > 11) {
+            valor = valor.substring(0, 11);
+        }
+
+        if (valor.length <= 10) {
+            valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
+            valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+        } else {
+            valor = valor.replace(/^(\d{2})(\d)/, "($1) $2");
+            valor = valor.replace(/(\d{5})(\d)/, "$1-$2");
+        }
+
+        contato.value = valor;
+    });
+
 });
